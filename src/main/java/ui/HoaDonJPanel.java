@@ -11,6 +11,7 @@ import entity.SanPham;
 import entity.khachHang;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import util.Auth;
 import util.XDate;
 
 public class HoaDonJPanel extends javax.swing.JPanel {
@@ -25,7 +26,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         hddao = new HoaDonDAO();
         khdao = new KhachHangDAO();
         hdctdao= new HoaDonChiTietDAO();
-        hd = (ArrayList<HoaDon>) hddao.selectAll();
+        hd = (ArrayList<HoaDon>) hddao.selectByIdKH(Auth.user.getIdKH());
         dskh= (ArrayList<khachHang>) khdao.selectAll();
         dshdct= (ArrayList<HoaDonChiTiet>) hdctdao.selectAll();
          HienThitable();

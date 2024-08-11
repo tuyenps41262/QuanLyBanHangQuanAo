@@ -1,4 +1,3 @@
-
 package ui;
 
 import DAO.TaiKhoanDAO_1;
@@ -8,14 +7,16 @@ import util.MsgBox;
 import util.Auth;
 
 public class LoginJDialog extends javax.swing.JDialog {
-      TaiKhoanDAO_1 dao = new TaiKhoanDAO_1();
+
+    TaiKhoanDAO_1 dao = new TaiKhoanDAO_1();
+
     public LoginJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
     }
-    
-  void checkTaiKhoan(){
+
+    void checkTaiKhoan() {
         String username = txtUsername.getText();
         String password = txtPass.getText();
         TaiKhoan tk = dao.selectById(username);
@@ -26,7 +27,7 @@ public class LoginJDialog extends javax.swing.JDialog {
         } else {
             Auth.user = tk;
             JOptionPane.showMessageDialog(null, "Đăng nhập thành công!");
-             this.dispose(); //dong tab 
+            this.dispose(); //dong tab 
             if (tk.getVaitro().equals("admin")) {
                 new HomeJDialog(null, true).setVisible(true);
             } else {
@@ -34,11 +35,13 @@ public class LoginJDialog extends javax.swing.JDialog {
             }
         }
     }
-  
-  void Exit(){
-      MsgBox.confirm(this, "Ban muon ket thuc khong!");
-      System.exit(0);
-  }
+
+    void Exit() {
+        boolean confirm = MsgBox.confirm(this, "Ban muon ket thuc khong!");
+        if (confirm) {
+            System.exit(0);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -68,7 +71,7 @@ public class LoginJDialog extends javax.swing.JDialog {
 
         txtUsername.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(255, 204, 102));
-        txtUsername.setText("user1");
+        txtUsername.setText("user11");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -246,19 +249,19 @@ public class LoginJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPassActionPerformed
 
     private void lblpassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblpassMouseReleased
-       txtPass.setEchoChar('*');
+        txtPass.setEchoChar('*');
     }//GEN-LAST:event_lblpassMouseReleased
 
     private void lblpassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblpassMousePressed
         // TODO add your handling code here:
-         txtPass.setEchoChar((char)0);
+        txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_lblpassMousePressed
 
     private void lblDangKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangKyMouseClicked
         // TODO add your handling code here:
         this.dispose();
         new DangKyJDialog(null, true).setVisible(true);
-        
+
     }//GEN-LAST:event_lblDangKyMouseClicked
 
     /**

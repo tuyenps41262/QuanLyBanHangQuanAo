@@ -63,6 +63,7 @@ public class Sp_GioHang extends javax.swing.JPanel {
 
     }
 
+    // Đổ data vào bảng giỏ hàng
     void fillToCart() {
         String[] headers = {"ID", "TenSP", "GiaBan", "SoLuong"};
         DefaultTableModel model = new DefaultTableModel(headers, 0);
@@ -80,8 +81,7 @@ public class Sp_GioHang extends javax.swing.JPanel {
         setEnabled(true);
     }
 
-    
-    
+    // Xử lí logic thêm sản phẩm vào giỏ hàng
     public void loadDataToGioHang() {
         // Kiểm tra xem người dùng đã chọn sản phẩm chưa
         int selectedRow = tblSanPham.getSelectedRow();
@@ -106,14 +106,28 @@ public class Sp_GioHang extends javax.swing.JPanel {
         // Lấy thông tin sản phẩm từ bảng sản phẩm
         String idSanPham = String.valueOf(tblSanPham.getValueAt(selectedRow, 0));
 
+//        int soLuongTon = (int) tblSanPham.getValueAt(selectedRow, 2);
+        SanPham sanPham = spdao.selectById(idSanPham);
+
+//        System.out.println("=====> soLuong: " + soLuong + ", soLuong trong db: " + sanPham.getSoLuong());
         // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
         GioHang gioHang = ghdao.getOneById(idSanPham, Auth.user.getIdKH());
         if (gioHang != null) {
             // Cập nhật số lượng sản phẩm trong giỏ hàng
-            soLuong += gioHang.getSoLuong();
+            soLuong = soLuong + gioHang.getSoLuong();
+            if (soLuong > sanPham.getSoLuong()) {
+                JOptionPane.showMessageDialog(this, "Số lượng vượt quá số lượng tồn!");
+                return;
+            }
+
             gioHang.setSoLuong(soLuong);
             ghdao.update(gioHang);
         } else {
+            if (soLuong > sanPham.getSoLuong()) {
+                JOptionPane.showMessageDialog(this, "Số lượng vượt quá số lượng tồn!");
+                return;
+            }
+            
             // Thêm sản phẩm mới vào giỏ hàng
             GioHang newGioHang = new GioHang();
             newGioHang.setIdSP(idSanPham);
@@ -121,24 +135,25 @@ public class Sp_GioHang extends javax.swing.JPanel {
             newGioHang.setSoLuong(soLuong);
             ghdao.insert(newGioHang);
         }
+
         // Cập nhật lại dữ liệu trong giỏ hàng
         fillToCart();
     }
 
-   public void suaSoLuong() {
-    int row = tblCart.getSelectedRow();
-    if (row == -1) {
-        MsgBox.alert(this, "Vui lòng chọn sản phẩm cần sửa số lượng");
-    } else {
-        String idSP = String.valueOf(tblCart.getValueAt(row, 0));
-        String tenSanPham = String.valueOf(tblCart.getValueAt(row, 1));
-        int soLuong = Integer.parseInt(String.valueOf(tblCart.getValueAt(row, 3)));
-        int idKH = Auth.user.getIdKH();
-        SuaSoLuongSPGioHangFrame suaFrame = new SuaSoLuongSPGioHangFrame(Sp_GioHang.this, soLuong, idSP, idKH, tenSanPham);
-        suaFrame.setVisible(true);
-      //  HomeKhachHangJDialog.dispose(); // Đóng HomeKhachHangJDialog
+    public void suaSoLuong() {
+        int row = tblCart.getSelectedRow();
+        if (row == -1) {
+            MsgBox.alert(this, "Vui lòng chọn sản phẩm cần sửa số lượng");
+        } else {
+            String idSP = String.valueOf(tblCart.getValueAt(row, 0));
+            int idKH = Auth.user.getIdKH();
+            String tenSP = String.valueOf(tblCart.getValueAt(row, 1));
+
+            SuaSoLuongSanPhamJDailog suaJDailog = new SuaSoLuongSanPhamJDailog(null, true, idSP, idKH, tenSP);
+            suaJDailog.setVisible(true);
+            //  HomeKhachHangJDialog.dispose(); // Đóng HomeKhachHangJDialog
+        }
     }
-}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -435,12 +450,12 @@ public class Sp_GioHang extends javax.swing.JPanel {
         // TODO add your handling code here
         //new SuaSoLuongSPGioHangFrame().setVisible(true);
         //new SuaSoLuongSPGioHangFrame(GioHang, , TOOL_TIP_TEXT_KEY, WIDTH, TOOL_TIP_TEXT_KEY)
-        
+
 //        suaSoLuong();
 //        fillToCart();
 //        this.setEnabled(false);
-    //new SuaSoLuongSPGioHangFrame().setVisible(true);
-    //new SuaSoLuongSanPhamJDailog(parent, true).setVisible(true);
+        //new SuaSoLuongSPGioHangFrame().setVisible(true);
+        //new SuaSoLuongSanPhamJDailog(parent, true).setVisible(true);
 
     }//GEN-LAST:event_btnSuaMouseClicked
 

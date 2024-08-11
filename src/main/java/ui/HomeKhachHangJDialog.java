@@ -1,4 +1,3 @@
-
 package ui;
 
 import DAO.KhachHangDAO;
@@ -6,9 +5,10 @@ import javax.swing.JPanel;
 import util.Auth;
 
 public class HomeKhachHangJDialog extends javax.swing.JDialog {
-       private JPanel jpanel;
-       KhachHangDAO khdao = new KhachHangDAO();
-        
+
+    private JPanel jpanel;
+    KhachHangDAO khdao = new KhachHangDAO();
+
     public HomeKhachHangJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -182,17 +182,17 @@ public class HomeKhachHangJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSPGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPGioHangMouseClicked
-          showPanel(new Sp_GioHang());
+        showPanel(new Sp_GioHang());
     }//GEN-LAST:event_lblSPGioHangMouseClicked
 
     private void lblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseClicked
         // TODO add your handling code here:
-         showPanel(new HoaDonJPanel());
+        showPanel(new HoaDonJPanel());
     }//GEN-LAST:event_lblHoaDonMouseClicked
 
     private void lblTenThongTinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTenThongTinMouseClicked
         // TODO add your handling code here:
-        if(evt.getClickCount()==2){
+        if (evt.getClickCount() == 2) {
             new ThongTinKhachHangJDialog(null, true).setVisible(true);
         }
     }//GEN-LAST:event_lblTenThongTinMouseClicked
@@ -201,25 +201,26 @@ public class HomeKhachHangJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
         new LoginJDialog(null, true).setVisible(true);
-        
+
     }//GEN-LAST:event_lblDangXuatMouseClicked
 
     private void lblDatHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDatHangMouseClicked
         showPanel(new DatHangJPanel());
     }//GEN-LAST:event_lblDatHangMouseClicked
 
-     public void ThongtinTaiKhoan(){
-        lblTenThongTin.setText( khdao.selectById(String.valueOf(Auth.user.getIdKH())).getTenKh());
+    public void ThongtinTaiKhoan() {
+        lblTenThongTin.setText(khdao.selectById(String.valueOf(Auth.user.getIdKH())).getTenKh());
     }
-    
-       private void showPanel(JPanel panel){
-        jpanel = panel; 
+
+    private void showPanel(JPanel panel) {
+        jpanel = panel;
         pnMain.removeAll();
         pnMain.add(jpanel);
         pnMain.validate();
     }
+
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 HomeKhachHangJDialog dialog = new HomeKhachHangJDialog(new javax.swing.JFrame(), true);

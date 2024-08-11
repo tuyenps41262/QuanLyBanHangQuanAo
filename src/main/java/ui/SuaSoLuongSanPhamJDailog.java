@@ -8,28 +8,24 @@ import DAO.gioHangDAO;
 import entity.GioHang;
 import util.MsgBox;
 import javax.swing.JOptionPane;
+
 public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
 
     private Sp_GioHang parentPanel;
-    private int soLuong;
-    private String idSP;
-    private int idKH;
-    private String tenSanPham;
+    private gioHangDAO gioHangDAO;
+    private GioHang gioHang;
 
-    gioHangDAO gioHangDAO;
-    public SuaSoLuongSanPhamJDailog(java.awt.Frame parent, boolean modal) {
+    public SuaSoLuongSanPhamJDailog(java.awt.Frame parent, boolean modal, String idSP, int idKH, String tenSP) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.parentPanel = parentPanel;
-        this.soLuong = soLuong;
-        this.idSP = idSP;
-        this.idKH = idKH;
-        this.tenSanPham = tenSanPham;
         gioHangDAO = new gioHangDAO();
-        spinnerSoLuong.setValue(soLuong);
-        lblTenSanPham.setText("Sản phẩm: " + tenSanPham);
-        
+
+        gioHang = gioHangDAO.getOneById(idSP, idKH);
+        spinnerSoLuong.setValue(gioHang.getSoLuong());
+        lblTenSanPham.setText("Sản phẩm: " + tenSP);
+
     }
 
     /**
@@ -68,7 +64,7 @@ public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
             }
         });
 
-        lblTenSanPham.setText("jLabel2");
+        lblTenSanPham.setText("Tên sản phẩm:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,8 +118,8 @@ public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
 
         GioHang gioHang = new GioHang();
         gioHang.setSoLuong(soluong);
-        gioHang.setIdSP(this.idSP);
-        gioHang.setIdKH(this.idKH);
+        gioHang.setIdSP(this.gioHang.getIdSP());
+        gioHang.setIdKH(this.gioHang.getIdKH());
         gioHangDAO.update(gioHang);
         this.dispose();
         //        new GioHangJDialog().setVisible(true);
@@ -133,47 +129,6 @@ public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
         new Sp_GioHang().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SuaSoLuongSanPhamJDailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SuaSoLuongSanPhamJDailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SuaSoLuongSanPhamJDailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SuaSoLuongSanPhamJDailog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                SuaSoLuongSanPhamJDailog dialog = new SuaSoLuongSanPhamJDailog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
