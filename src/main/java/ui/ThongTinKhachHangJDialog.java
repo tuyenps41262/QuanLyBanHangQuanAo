@@ -36,10 +36,7 @@ public class ThongTinKhachHangJDialog extends javax.swing.JDialog {
             txtTenKH.setText(kh.getTenKh());
             txtsdtKH.setText(kh.getDienThoai());
             txtEmailKH.setText(kh.getEmail());
-            txtDiaChiKH.setText(kh.getDiachi());
-//            rdoNam.setSelected(kh.getGioiTinh().equals("Nam"));
-//            rdoNu.setSelected(kh.getGioiTinh().equals("Nư"));
-//            rdoKhac.setSelected(kh.getGioiTinh().equals("Khac"));             
+            txtDiaChiKH.setText(kh.getDiachi());            
                 if (kh.getGioiTinh().equals("Nam")) {
                     rdoNam.setSelected(true);
                 } else if (kh.getGioiTinh().equals("Nữ")) {

@@ -25,6 +25,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
             }
         });
         fillComboBoxNam();
+        fillTableThongKe();
     }
 
     void fillComboBoxNam() {
@@ -83,7 +84,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Sản Phẩm", "Sản Phẩm", "Doanh Thu", "Số Lượng SP Đã Bán", "Lượng Khách Hàng"
+                "Mã Sản Phẩm", "Tên Sản Phẩm", "Doanh Thu", "Số Lượng SP Đã Bán", "Lượng Khách Hàng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -148,6 +149,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
     private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
         // TODO add your handling code here:
+        fillComboBoxNam();
         fillTableThongKe();
     }//GEN-LAST:event_cboNamActionPerformed
 

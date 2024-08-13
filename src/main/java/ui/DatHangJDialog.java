@@ -252,7 +252,7 @@ public class DatHangJDialog extends javax.swing.JDialog {
             java.util.Date utilDate = new java.util.Date();
             entity.setNgayLap(new Date(utilDate.getTime()));
             entity.setIdKH(Auth.user.getIdKH());
-            entity.setTrangThaiThanhToan("Da thanh toan");
+            entity.setTrangThaiThanhToan("Đã thanh toán");
             entity.setTenNguoiNhan(txtNguoiNhan.getText());
             entity.setDiaChi(txaDiaChi.getText());
 

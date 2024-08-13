@@ -5,10 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import util.JdbcHelper;
-import util.XDate;
+
 
 public class HoaDonDAO extends HomeDAO<HoaDon, String> {
 
@@ -67,11 +65,12 @@ public class HoaDonDAO extends HomeDAO<HoaDon, String> {
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setIdHD(rs.getString("IdHD"));
-                hd.setDienThoai(rs.getString("DienThoai"));
+                hd.setDienThoai(rs.getString("SoDienThoai"));
                 hd.setTrangThaiThanhToan(rs.getString("TrangThaiThanhToan"));
                 hd.setNgayLap(rs.getDate("NgayLap"));
                 hd.setDiaChi(rs.getString("DiaChi"));
-                // hd.setIdNV(rs.getInt("IdNV"));
+                hd.setTenNguoiNhan(rs.getString("TenNguoiNhan"));
+                hd.setThanhTien(rs.getDouble("ThanhTien"));
                 hd.setIdKH(rs.getInt("IdKH"));
 
                 list.add(hd);

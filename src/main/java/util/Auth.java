@@ -19,7 +19,7 @@ public class Auth {
 //     * (trả về `true` nếu `isLogin()` là `true` và vai trò của người dùng là "Admin")
 //     * @return boolean
     public static boolean isAdmin(){
-        return Auth.isLogin() && user.getVaitro().equals("Admin");
+        return Auth.isLogin() && user.getVaitro().equalsIgnoreCase("admin");
     }
 //     Phương thức kiểm tra xem người dùng đã đăng nhập và có vai trò là "User" chưa
 //     * (trả về `true` nếu `isLogin()` là `true` và vai trò của người dùng là "User")

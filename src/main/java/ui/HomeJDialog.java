@@ -32,6 +32,7 @@ public class HomeJDialog extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         lblTenThongTin1 = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
+        lblSanPham1 = new javax.swing.JLabel();
         pnMain = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -56,7 +57,6 @@ public class HomeJDialog extends javax.swing.JDialog {
         lblNhanVien.setBackground(new java.awt.Color(255, 255, 153));
         lblNhanVien.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNhanVien.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\user1.png")); // NOI18N
         lblNhanVien.setText("QUẢN LÝ NHÂN VIÊN");
         lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblNhanVien.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -76,7 +76,6 @@ public class HomeJDialog extends javax.swing.JDialog {
 
         lblkhachHang.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblkhachHang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblkhachHang.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\kh1.png")); // NOI18N
         lblkhachHang.setText("QUẢN LÝ KHÁCH HÀNG");
         lblkhachHang.setToolTipText("");
         lblkhachHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -88,7 +87,6 @@ public class HomeJDialog extends javax.swing.JDialog {
 
         lblSanPham.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblSanPham.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\sp1.png")); // NOI18N
         lblSanPham.setText("QUẢN LÝ SẢN PHẨM");
         lblSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,7 +97,6 @@ public class HomeJDialog extends javax.swing.JDialog {
 
         lblThongKe.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblThongKe.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\tk2.png")); // NOI18N
         lblThongKe.setText("THỐNG KÊ");
         lblThongKe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,7 +106,6 @@ public class HomeJDialog extends javax.swing.JDialog {
         });
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\lgo1.png")); // NOI18N
 
         lblTenThongTin1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         lblTenThongTin1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,12 +119,21 @@ public class HomeJDialog extends javax.swing.JDialog {
         lblDangXuat.setBackground(new java.awt.Color(255, 153, 0));
         lblDangXuat.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDangXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblDangXuat.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\dx.png")); // NOI18N
         lblDangXuat.setText("ĐĂNG XUẤT");
         lblDangXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDangXuatMouseClicked(evt);
+            }
+        });
+
+        lblSanPham1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblSanPham1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblSanPham1.setText("QUẢN LÝ HÓA ĐƠN");
+        lblSanPham1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSanPham1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSanPham1MouseClicked(evt);
             }
         });
 
@@ -157,7 +162,10 @@ public class HomeJDialog extends javax.swing.JDialog {
                         .addComponent(lblThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblSanPham1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -179,16 +187,17 @@ public class HomeJDialog extends javax.swing.JDialog {
                 .addComponent(lblkhachHang)
                 .addGap(26, 26, 26)
                 .addComponent(lblSanPham)
-                .addGap(26, 26, 26)
+                .addGap(25, 25, 25)
+                .addComponent(lblSanPham1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblThongKe)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         pnMain.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\DuAn1_ps39536\\src\\main\\resources\\anhCSDL\\sl5.png")); // NOI18N
         jLabel2.setText("jLabel2");
         pnMain.add(jLabel2, java.awt.BorderLayout.CENTER);
 
@@ -252,6 +261,11 @@ public class HomeJDialog extends javax.swing.JDialog {
             new ThongTinNhanVienJDialog(null, true).setVisible(true);
         }
     }//GEN-LAST:event_lblTenThongTin1MouseClicked
+
+    private void lblSanPham1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPham1MouseClicked
+        // TODO add your handling code here:
+        showPanel(new QuanLyHoaDonJPanel());
+    }//GEN-LAST:event_lblSanPham1MouseClicked
      
      public void ThongtinTaiKhoan(){
         lblTenThongTin1.setText( Nvdao.selectById(String.valueOf(Auth.user.getIdNV())).getTenNv());
@@ -313,6 +327,7 @@ public class HomeJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblDangXuat;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSanPham;
+    private javax.swing.JLabel lblSanPham1;
     private javax.swing.JLabel lblTenThongTin1;
     private javax.swing.JLabel lblThongKe;
     private javax.swing.JLabel lblkhachHang;

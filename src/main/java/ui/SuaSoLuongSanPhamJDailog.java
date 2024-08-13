@@ -4,16 +4,20 @@
  */
 package ui;
 
+import DAO.SanPhamDAO;
 import DAO.gioHangDAO;
 import entity.GioHang;
+import entity.SanPham;
 import util.MsgBox;
 import javax.swing.JOptionPane;
+import util.Auth;
 
 public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
 
     private Sp_GioHang parentPanel;
     private gioHangDAO gioHangDAO;
     private GioHang gioHang;
+    SanPhamDAO spdao;
 
     public SuaSoLuongSanPhamJDailog(java.awt.Frame parent, boolean modal, String idSP, int idKH, String tenSP) {
         super(parent, modal);
@@ -21,7 +25,7 @@ public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         this.parentPanel = parentPanel;
         gioHangDAO = new gioHangDAO();
-
+        spdao = new SanPhamDAO();
         gioHang = gioHangDAO.getOneById(idSP, idKH);
         spinnerSoLuong.setValue(gioHang.getSoLuong());
         lblTenSanPham.setText("Sản phẩm: " + tenSP);
@@ -113,6 +117,18 @@ public class SuaSoLuongSanPhamJDailog extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập số lượng ở dạng số nguyên!");
+            return;
+        }
+
+//        SanPham sanPham = spdao.selectById(this.gioHang.getIdSP());
+//        if (soluong > sanPham.getSoLuong()) {
+//            JOptionPane.showMessageDialog(this, "Số lượng vượt quá số lượng tồn!");
+//            return;
+//        }
+
+        SanPham sanPham = spdao.selectById(this.gioHang.getIdSP());
+        if (soluong > sanPham.getSoLuong()) {
+            MsgBox.alert(this, "số lượng vượt quá !");
             return;
         }
 

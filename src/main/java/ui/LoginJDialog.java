@@ -19,15 +19,24 @@ public class LoginJDialog extends javax.swing.JDialog {
     void checkTaiKhoan() {
         String username = txtUsername.getText();
         String password = txtPass.getText();
-        TaiKhoan tk = dao.selectById(username);
+        
+        if (username == null 
+                || username.equals("")
+                || password == null 
+                || password.equals("")) {
+            MsgBox.alert(this, "Vui lòng nhập đủ thông tin đăng nhập");
+            return;
+        }
+        
+        TaiKhoan tk = dao.selectById(username, password);
         if (tk == null) {
             MsgBox.alert(this, "Tài khoản không tồn tại hoặc sai thông tin đăng nhập");
-        } else if (!password.equals(txtPass.getText())) {
-            MsgBox.alert(this, "Sai mật khẩu !");
         } else {
             Auth.user = tk;
             JOptionPane.showMessageDialog(null, "Đăng nhập thành công!");
             this.dispose(); //dong tab 
+            
+            
             if (tk.getVaitro().equals("admin")) {
                 new HomeJDialog(null, true).setVisible(true);
             } else {

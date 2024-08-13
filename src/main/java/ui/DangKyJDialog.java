@@ -125,6 +125,7 @@ public class DangKyJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
@@ -173,12 +174,15 @@ public class DangKyJDialog extends javax.swing.JDialog {
         jLabel26.setForeground(new java.awt.Color(51, 51, 0));
         jLabel26.setText("Giới tính");
 
+        buttonGroup1.add(rdoNam);
         rdoNam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdoNam.setText("Nam");
 
+        buttonGroup1.add(rdoNu);
         rdoNu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdoNu.setText("Nữ");
 
+        buttonGroup1.add(rdoKhac);
         rdoKhac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdoKhac.setText("Khác");
 
@@ -486,6 +490,7 @@ public class DangKyJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignUp;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;

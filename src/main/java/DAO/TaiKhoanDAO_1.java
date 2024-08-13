@@ -16,6 +16,7 @@ public class TaiKhoanDAO_1 extends HomeDAO<TaiKhoan, String> {
          return new TaiKhoanDAO_1();
     }
     private String username;
+    private String SQL_USERNAME = "Select * from  TaiKhoan  where username=? and matkhau =? ";
      
       @Override
     public void insert(TaiKhoan entity) {
@@ -38,10 +39,8 @@ public class TaiKhoanDAO_1 extends HomeDAO<TaiKhoan, String> {
         return this.selectBySQL(sql);
     }
     
-     @Override
-    public TaiKhoan selectById(String username) {
-            String sql = " Select * from  TaiKhoan  where username=?";
-            List<TaiKhoan> list= this. selectBySQL(sql, username);
+    public TaiKhoan selectById(String username, String password) {
+            List<TaiKhoan> list= this. selectBySQL(SQL_USERNAME, username, password );
             return list.size() >0 ? list.get(0): null;
     }
     
@@ -139,6 +138,11 @@ public class TaiKhoanDAO_1 extends HomeDAO<TaiKhoan, String> {
             throw new RuntimeException(ex);
         }
         return list;
+    }
+
+    @Override
+    public TaiKhoan selectById(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
   
 }
